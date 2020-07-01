@@ -1,12 +1,27 @@
-#include "SDL.h"
 #pragma once
-class Unit{
-protected:
-    SDL_Texture* assets;
+#include "SDL.h"
+#include <iostream>
+
+class Unit
+{
+    
+    protected:
+    SDL_Texture *assets;
     SDL_Rect src;
     SDL_Rect mover;
-public:
-    Unit(SDL_Texture*);
-    void draw(SDL_Renderer*);
+    
+    public:
+    
+    Unit();
+    virtual void updatePos();
+    void draw(SDL_Renderer *);
+    int getY();
+    int getX();
+    int getW();
+    int getH();
+    void setY(int);
     SDL_Rect getMover();
+    //bool virtual check_collision(Unit *);
+    friend bool operator ==(Unit &, Unit&);
+    ~Unit();
 };
